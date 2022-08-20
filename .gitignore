@@ -1,0 +1,6 @@
+**node_modules
+**.env
+**.http
+**.log
+*migration.sql
+*migration_lock.toml
