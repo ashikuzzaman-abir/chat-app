@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env: 
+      working-directory: ./client
 
     strategy:
       matrix:
@@ -24,7 +26,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        path: ./client
+        # path: ./client
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
