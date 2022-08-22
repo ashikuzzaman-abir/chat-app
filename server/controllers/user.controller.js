@@ -40,7 +40,7 @@ module.exports = {
 		try {
 			const user = await prisma.user.findUnique({
 				where: {
-					username: req.body.username,
+					username: req.body.username
 				},
 			});
 			if (user) {
@@ -68,6 +68,7 @@ module.exports = {
 						.json({
 							message: `${user.name} logged in successfully`,
 							token,
+							user: payload
 						});
 					
 				} else {

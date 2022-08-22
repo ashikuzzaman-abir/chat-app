@@ -2,7 +2,7 @@ module.exports = {
 	morganMode: "combined",
 	frontendURL: "http://localhost:3000/",
 	backendURL: "http://localhost:5000/",
-	corsOrigin: "*",
+	corsOrigin: "http://localhost:3000",
 	corsCreedentials: true,
 	mode: "test",
 	nodemailer: {

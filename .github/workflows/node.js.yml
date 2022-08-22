@@ -5,20 +5,16 @@ name: CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "dev" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "dev" ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    # default:
-    #   run: 
-    #     working-directory: ./client/
     defaults:
       run:
-      # Mobile folder working directory.
         working-directory: client
 
     strategy:
@@ -31,14 +27,9 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        # path: ./client
-        # filters: |
-        #   client:
-        #     - 'client/**'
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: './client/package-lock.json'
-    # - run: cd client/
     - run: npm ci
     - run: npm run build --if-present
 #     - run: npm test

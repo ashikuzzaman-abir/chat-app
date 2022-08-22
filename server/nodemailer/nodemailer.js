@@ -17,20 +17,24 @@ process.on("message", async (options) => {
 });
 
 const sendMail = async (options) => {
-	const accessToken = await oAuth2Client.getAccessToken();
-	const transport = nodemailer.createTransport({
-		service: "gmail",
-		auth: {
-			type: "OAuth2",
-			user: "asrabirphone@gmail.com",
-			clientId: clientId,
-			clientSecret: clientSecret,
-			refreshToken: refreshToken,
-			accessToken: accessToken,
-		},
-	});
-	const result = await transport.sendMail(options);
-	return result;
+	try {
+		const accessToken = await oAuth2Client.getAccessToken();
+		const transport = nodemailer.createTransport({
+			service: "gmail",
+			auth: {
+				type: "OAuth2",
+				user: "asrabirphone@gmail.com",
+				clientId: clientId,
+				clientSecret: clientSecret,
+				refreshToken: refreshToken,
+				accessToken: accessToken,
+			},
+		});
+		const result = await transport.sendMail(options);
+		return result;
+	} catch (ex) {
+		console.log(ex);
+	}
 };
 
 module.exports = sendMail;
