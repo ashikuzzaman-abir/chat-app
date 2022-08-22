@@ -10,7 +10,7 @@ const Login = () => {
 	const [prompt, setPrompt] = useState(null);
 	const loginFormSubmitter = async (e) => {
 		e.preventDefault();
-		const {data, loading, error} = await fetcher(`${config.apiURL}/user/login/`, "POST", {
+		const {data, error} = await fetcher(`${config.apiURL}/user/login/`, "POST", {
 			username,password
 	});
 		if (data) {
