@@ -2,8 +2,10 @@ import React, {useState} from "react";
 import fetcher from "../utils/fetcher";
 import {useNavigate} from 'react-router-dom';
 import config from "../configs/main.config";
+import useUser from "../hooks/useUser";
 
 const Login = () => {
+	const {user, token, setToken, setUser} = useUser();
 	const navigator = useNavigate();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -14,8 +16,11 @@ const Login = () => {
 			username,password
 	});
 		if (data) {
-			localStorage.setItem("token", data.token);
-			localStorage.setItem("user", JSON.stringify(data.user));
+			// localStorage.setItem("token", data.token);
+			// localStorage.setItem("user", JSON.stringify(data.user));
+			setUser(data.user)
+			setToken(data.token)
+
 			navigator("/", {replace: true});
 		}
 		if(error) {
