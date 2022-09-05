@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Message({body, sendFor, time, picture}) {
-    const isMyMessage = true;
+    // const isMyMessage = true;
   return (
 		<div className=' w-full flex '>
 			<div className='flex flex-col'>

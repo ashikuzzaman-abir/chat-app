@@ -14,4 +14,11 @@ module.exports = {
 			expiresIn: "30d",
 		},
 	},
+	nodemailer: {
+		service: "gmail",
+		auth: {
+			type: "OAuth2",
+			user: "asrabirphone@gmail.com",
+		},
+	},
 };

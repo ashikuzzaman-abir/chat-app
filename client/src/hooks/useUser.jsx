@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import _ from "lodash";
 import { replaceToken, replaceUser } from "../redux/user.reducer";
 import { useDispatch, useSelector } from "react-redux";

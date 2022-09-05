@@ -1,8 +1,8 @@
 import "./App.css";
 
-import useUser from "./hooks/useUser";
-import { useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+// import useUser from "./hooks/useUser";
+// import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -12,7 +12,6 @@ import Messenger from "./pages/Messenger";
 import Redirector from "./components/Redirector";
 
 function App() {
-	const navigator = useNavigate();
 	const user = useSelector((state) => state.user.data);
 	return (
 		<div className='App bg-mainDarkBg min-h-[100vh]'>

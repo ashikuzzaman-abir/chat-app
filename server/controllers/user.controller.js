@@ -139,6 +139,7 @@ module.exports = {
 			const mailer = fork("./nodemailer/nodemailer.js");
 			mailer.send(mailOptions);
 			// mailer.on('message', message => {
+			// 	console.log(message);
 			// })
 		} catch (ex) {
 			if (ex) {
@@ -234,7 +235,7 @@ module.exports = {
 				res.clearCookie("otp-token")
 					.status(200)
 					.send("password changed");
-				
+				 //mail logic
 			}
 		} catch (ex) {
 			if (ex) {
