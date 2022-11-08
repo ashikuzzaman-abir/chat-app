@@ -19,6 +19,9 @@ model User {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   RecoveryOTP PasswordRecoveryOTP[]
+  messages Messages[]
+  conversations UsersInConversation[]
+  conversation Conversations[]
 }
 
 model PasswordRecoveryOTP{
@@ -29,4 +32,29 @@ model PasswordRecoveryOTP{
   createdAt   DateTime @default(now())
   expired     Boolean @default(false)
   token       String?
+}
+model Conversations{
+  id String @id @default(cuid())
+  title    String?
+  messages Messages[]
+  perticipents UsersInConversation[]
+  createdby User @relation(fields: [creatorId], references: [id])
+  creatorId String
+}
+model UsersInConversation{
+  id String @id @default(cuid())
+  conversation Conversations @relation(fields: [conversationId], references: [id])
+  conversationId String
+  user User @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Messages{
+  id String @id @default(cuid())
+  body String?
+  conversation Conversations @relation(fields: [conversationId], references: [id])
+  conversationId String
+  sender User @relation(fields: [senderId], references: [id])
+  senderId String
+  createdAt DateTime @default(now())
 }
